@@ -6,18 +6,18 @@ import { chartConfig } from 'shared/config';
 import { styles } from './styles.module';
 
 type DailyDataProps = {
-  dayData: string[];
-  tempData: [];
+  daysData: string[];
+  tempData: number[];
 };
 
 const { width } = Dimensions.get('window');
 
-export const DailyData = ({ dayData, tempData }: DailyDataProps) => {
+export const DailyData = ({ daysData, tempData }: DailyDataProps) => {
   return (
     <View style={styles.main}>
       <LineChart
         data={{
-          labels: dayData,
+          labels: daysData,
           datasets: [
             {
               data: tempData,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import { WeatherStoreData, WeatherStoreDataSearch } from 'shared/api';
 import { WeatherIcon, WeatherProperty } from 'shared/ui';
 
 import { styles } from './styles.module';
@@ -9,21 +10,11 @@ import windy from '../../../../../assets/windy.png';
 import rainy from '../../../../../assets/rainy.png';
 
 type WeatherDataProps = {
-  weatherData: {
-    day: string;
-    main: string;
-    humidity: string;
-    wind_speed: string;
-    pressure: string;
-  };
+  weatherData: WeatherStoreData | WeatherStoreDataSearch;
 };
 
 export const WeatherData = ({ weatherData }: WeatherDataProps) => {
-  // TODO parse WeatherDATA
-
-  console.log(weatherData);
-
-  if (!weatherData) return false;
+  if (!weatherData) return null;
 
   return (
     <View style={styles.container}>
@@ -32,14 +23,14 @@ export const WeatherData = ({ weatherData }: WeatherDataProps) => {
       </View>
 
       <View style={styles.location}>
-        <Text style={styles.locationText}>Today</Text>
+        <Text style={styles.locationText}>{weatherData?.name ?? 'Today'}</Text>
       </View>
 
-      <WeatherIcon main="Drizzle" hours={19} />
+      <WeatherIcon main={weatherData.main} hours={weatherData?.hours ?? 0} />
 
       <View>
         <Text style={styles.tempText}>
-          {/* {parseInt(weatherData.temp)} */}
+          {weatherData.temp.toFixed(0)}
           <Text style={styles.tempModeText}>°C</Text>
         </Text>
       </View>

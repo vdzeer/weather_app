@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
     width: width - 30,
     alignSelf: 'center',
     justifyContent: 'space-between',
-    marginVertical: 10,
+    marginVertical: 20,
     borderRadius: 30,
   },
 });

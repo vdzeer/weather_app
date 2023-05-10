@@ -33,7 +33,6 @@ export const Navigation = () => {
         screenOptions={{
           headerShown: false,
           tabBarStyle: {
-            height: 70,
             position: 'absolute',
             bottom: '2%',
             left: '3%',
@@ -59,7 +58,7 @@ export const Navigation = () => {
               dark: BACKGROUND_COLOR,
             }}
             maxWidth={320}
-            height={65}
+            height={75}
             darkMode={true}
             {...props}
           />

@@ -1,52 +1,84 @@
-export interface Weather {
-  id: number;
-  main: string;
-  description: string;
-  icon: string;
-}
-
-export interface ListObject {
+export type ListObject = {
   dt: number;
   sunrise: number;
   sunset: number;
-  temp: {
-    day: number;
-    min: number;
-    max: number;
-    night: number;
-    eve: number;
-    morn: number;
-  };
-  feels_like: {
-    day: number;
-    eve: number;
-    morn: number;
-    night: number;
-  };
+  temp: number;
+  feels_like: number;
   pressure: number;
   humidity: number;
-  weather: Weather[];
-  speed: number;
-  deg: number;
-  gust: number;
-  pop: number;
+  dew_point: number;
   clouds: number;
-}
-
-export interface WeatherData {
-  city: {
+  uvi: number;
+  visibility: number;
+  wind_speed: number;
+  wind_gust: number;
+  wind_deg: number;
+  rain: { '1h': number };
+  snow: { '1h': number };
+  weather: {
     id: number;
-    name: string;
-    coord?: {
-      lon: number;
-      lat: number;
-    };
-    country: string;
-    population: number;
-    timezone: number;
+    main:
+      | 'Haze'
+      | 'Rain'
+      | 'Snow'
+      | 'Thunderstorm'
+      | 'Drizzle'
+      | 'Mist'
+      | 'Clouds'
+      | 'Clear';
+    description: string;
+    icon: number;
+  }[];
+};
+
+export type WeatherData = {
+  lat: number;
+  lon: number;
+  timezone: string;
+  timezone_offset: string;
+  current: ListObject;
+  minutely: {
+    dt: number;
+    precipitation: number;
   };
-  cod: string;
-  message: number;
-  cnt: number;
-  list: ListObject[];
-}
+  hourly: ListObject;
+  daily: ListObject[];
+};
+
+export type WeatherStoreData = {
+  day: string;
+  main:
+    | 'Haze'
+    | 'Rain'
+    | 'Snow'
+    | 'Thunderstorm'
+    | 'Drizzle'
+    | 'Mist'
+    | 'Clouds'
+    | 'Clear';
+  temp: number;
+  hours: number;
+  humidity: number;
+  wind_speed: number;
+  pressure: number;
+  name?: string;
+  daysData: string[];
+  tempData: number[];
+};
+
+export type WeatherStoreDataSearch = Omit<
+  WeatherStoreData,
+  'daysData' | 'tempData'
+>;
+
+export type WeatherDataByName = {
+  name: string;
+  main: {
+    temp: number;
+    pressure: number;
+    humidity: number;
+  };
+  wind: {
+    speed: number;
+  };
+} & Pick<ListObject, 'weather'>;

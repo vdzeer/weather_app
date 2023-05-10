@@ -1,18 +1,36 @@
 import type { AxiosPromise } from 'axios';
 
+import { API_KEY } from 'shared/config';
 import { apiInstance } from './base';
-import type { WeatherData } from './models';
+import type { WeatherData, WeatherDataByName } from './models';
 
 export type GetCityWeatherParams = {
-  city: string;
+  position: {
+    latitude: number;
+    longitude: number;
+  };
 };
 
-const BASE_URL = '/daily';
+export type GetCityWeatherByNameParams = {
+  name: string;
+};
 
-export const getCityWeather = (
-  params?: GetCityWeatherParams,
+export const getCityWeather = async (
+  params: GetCityWeatherParams,
 ): AxiosPromise<WeatherData> => {
-  return apiInstance.get(BASE_URL, {
-    params,
-  });
+  return (
+    await apiInstance.get(
+      `onecall?lat=${params.position.latitude}&lon=${params.position.longitude}&units=metric&appid=${API_KEY}`,
+    )
+  ).data as AxiosPromise<WeatherData>;
+};
+
+export const getCityWeatherByName = async (
+  params: GetCityWeatherByNameParams,
+): AxiosPromise<WeatherDataByName> => {
+  return (
+    await apiInstance.get(
+      `weather?q=${params.name}&units=metric&appid=${API_KEY}`,
+    )
+  ).data as AxiosPromise<WeatherDataByName>;
 };
