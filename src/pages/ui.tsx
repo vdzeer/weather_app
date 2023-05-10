@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Image, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ColorfulTabBar as TabBar } from 'react-navigation-tabbar-collection';
+import SplashScreen from 'react-native-splash-screen';
 
 import {
   NAV_BACKGROUND_COLOR,
@@ -27,6 +28,10 @@ import search from '../../assets/search.png';
 const Tab = createBottomTabNavigator();
 
 export const Navigation = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
     <NavigationContainer>
       <Tab.Navigator

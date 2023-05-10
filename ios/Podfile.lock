@@ -314,6 +314,8 @@ PODS:
     - RCTTypeSafety
     - React-Core
     - ReactCommon/turbomodule/core
+  - react-native-splash-screen (3.3.0):
+    - React-Core
   - React-perflogger (0.70.9)
   - React-RCTActionSheet (0.70.9):
     - React-Core/RCTActionSheetHeaders (= 0.70.9)
@@ -444,6 +446,7 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-location (from `../node_modules/react-native-location`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -530,6 +533,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-location"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-splash-screen:
+    :path: "../node_modules/react-native-splash-screen"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -604,6 +609,7 @@ SPEC CHECKSUMS:
   React-logger: 1b3522f1e05c6360e93df3607a016c39e30a7351
   react-native-location: 5a40ec1cc6abf2f6d94df979f98ec76c3a415681
   react-native-safe-area-context: f5549f36508b1b7497434baa0cd97d7e470920d4
+  react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
   React-perflogger: cce000b5caa4bcecbb29ee9cfdb47f26202d2599
   React-RCTActionSheet: ba29f52a82d970e2aba5804490ecaea587c7a751
   React-RCTAnimation: 36efe35933875c9aeea612f7d2c0394fa22552c1
