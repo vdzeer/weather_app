@@ -12,6 +12,8 @@ import {
 } from 'entities/weather/model';
 import { Loading } from 'shared/ui';
 import { WeatherStoreData } from 'shared/api';
+import { APP_IOS_GROUP } from 'shared/config';
+import SharedGroupPreferences from 'react-native-shared-group-preferences';
 
 /* eslint-disable */
 
@@ -55,7 +57,7 @@ export const DayWeather = () => {
   }, []);
 
   const weatherData = useMemo(() => {
-    if (!data) return currentCityWeather ?? null;
+    if (!data) return null;
 
     const { temp, humidity, wind_speed, weather, pressure } = data.current;
     const { daily } = data;
@@ -83,6 +85,16 @@ export const DayWeather = () => {
       daysData,
       tempData,
     };
+
+    SharedGroupPreferences.setItem(
+      'widgetVdzeer',
+      {
+        temp: weatherData!.temp.toFixed(0) + '°C',
+        main: weatherData!.main,
+        day: weatherData!.day,
+      },
+      APP_IOS_GROUP,
+    );
 
     setCurrentCityData?.(weatherData);
 
