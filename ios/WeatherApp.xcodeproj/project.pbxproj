@@ -623,11 +623,13 @@
 				DEVELOPMENT_TEAM = RV38A3JNTT;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Weather;
+				INFOPLIST_KEY_CFBundleDisplayName = "Weather App";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -656,11 +658,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RV38A3JNTT;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Weather;
+				INFOPLIST_KEY_CFBundleDisplayName = "Weather App";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
