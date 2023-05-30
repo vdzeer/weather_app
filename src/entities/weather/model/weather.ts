@@ -6,7 +6,7 @@ import { shallow } from 'zustand/shallow';
 import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 
 import {
-  WeatherData,
+  TWeatherData,
   WeatherDataByName,
   WeatherStoreData,
   getCityWeather,
@@ -19,9 +19,13 @@ export type TPosition = {
 };
 
 type WeatherStore = {
-  currentCityWeatherData: WeatherStoreData | null;
+  currentCityWeatherData: (WeatherStoreData & { date: Date }) | null;
+  position: TPosition;
   actions: {
-    setCurrentCityData: (data: WeatherStoreData | null) => void;
+    setCurrentCityData: (
+      data: (WeatherStoreData & { date: Date }) | null,
+    ) => void;
+    setCurrentPosition: (data: TPosition) => void;
   };
 };
 
@@ -37,9 +41,9 @@ const cityKeyFactory = {
 export const useGetCityWeatherByLocation = (
   position: TPosition,
   options?: UseQueryOptions<
-    AxiosPromise<WeatherData>,
+    AxiosPromise<TWeatherData>,
     AxiosError,
-    WeatherData,
+    TWeatherData,
     readonly (string | number)[]
   >,
 ) => {
@@ -71,10 +75,18 @@ export const useWeatherStore = create(
     persist<WeatherStore>(
       (set, get) => ({
         currentCityWeatherData: null,
+        position: {
+          latitude: 0,
+          longitude: 0,
+        },
         actions: {
           setCurrentCityData: currentCityWeatherData =>
             set({
               currentCityWeatherData,
+            }),
+          setCurrentPosition: position =>
+            set({
+              position,
             }),
           resetCurrentCity: () => set({ currentCityWeatherData: null }),
         },
@@ -91,3 +103,6 @@ export const useWeatherActions = () => useWeatherStore(state => state.actions);
 
 export const useCurrentCityWeather = () =>
   useWeatherStore(state => state.currentCityWeatherData, shallow);
+
+export const useCurrentPosition = () =>
+  useWeatherStore(state => state.position, shallow);

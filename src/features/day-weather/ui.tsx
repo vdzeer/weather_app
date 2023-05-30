@@ -29,7 +29,7 @@ export const DayWeather = () => {
 
   const { data, isLoading, isError } = useGetCityWeatherByLocation(position);
   const currentCityWeather = useCurrentCityWeather();
-  const { setCurrentCityData } = useWeatherActions();
+  const { setCurrentCityData, setCurrentPosition } = useWeatherActions();
 
   useEffect(() => {
     let unsubscribe: () => void;
@@ -43,10 +43,14 @@ export const DayWeather = () => {
         unsubscribe = RNLocation.subscribeToLocationUpdates(locations => {
           const currentLocation = locations?.[0] ?? {};
 
-          setPosition({
+          const position = {
             longitude: currentLocation.longitude,
             latitude: currentLocation.latitude,
-          });
+          };
+
+          setCurrentPosition(position);
+
+          setPosition(position);
         });
       }
     });
@@ -57,7 +61,17 @@ export const DayWeather = () => {
   }, []);
 
   const weatherData = useMemo(() => {
-    if (!data) return null;
+    if (!data) {
+      const currentDate = new Date();
+      const MIN_5 = 1000 * 60 * 5;
+      if (
+        currentCityWeather &&
+        +currentDate <= +currentCityWeather.date + MIN_5
+      ) {
+        return currentCityWeather;
+      }
+      return null;
+    }
 
     const { temp, humidity, wind_speed, weather, pressure } = data.current;
     const { daily } = data;
@@ -96,8 +110,7 @@ export const DayWeather = () => {
       APP_IOS_GROUP,
     );
 
-    setCurrentCityData?.(weatherData);
-
+    setCurrentCityData?.({ ...weatherData, date: new Date() });
     return weatherData;
   }, [data]);
 

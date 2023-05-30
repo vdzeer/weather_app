@@ -31,7 +31,7 @@ export type ListObject = {
   }[];
 };
 
-export type WeatherData = {
+export type TWeatherData = {
   lat: number;
   lon: number;
   timezone: string;

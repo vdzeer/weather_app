@@ -62,7 +62,7 @@ struct WeatherWidgetEntryView : View {
     var entry: Provider.Entry
   
   var body: some View {
-      HStack(spacing: 20) {
+    HStack(alignment: .center, spacing: 0.0) {
         VStack(alignment: .center) {
           Text(entry.day).bold().font(.system(size: 12)).foregroundColor(.red).italic().padding(.bottom, 0.5)
           Text(entry.temp)
@@ -78,9 +78,10 @@ struct WeatherWidgetEntryView : View {
             .shadow(color: .gray, radius: 15, x: 7, y: 7)
             .minimumScaleFactor(0.5)
           
-        }
-      }.padding(.all, 5)
-    }
+        }.padding(.all, 5)
+    }.frame(maxWidth: .infinity, maxHeight: .infinity)
+      .background(Color.white)
+  }
 }
 
 struct WeatherWidget: Widget {
@@ -90,8 +91,8 @@ struct WeatherWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             WeatherWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Weather Widget")
+        .description("Weather Widget")
     }
 }
 

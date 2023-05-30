@@ -2,7 +2,7 @@ import type { AxiosPromise } from 'axios';
 
 import { API_KEY } from 'shared/config';
 import { apiInstance } from './base';
-import type { WeatherData, WeatherDataByName } from './models';
+import type { TWeatherData, WeatherDataByName } from './models';
 
 export type GetCityWeatherParams = {
   position: {
@@ -17,12 +17,12 @@ export type GetCityWeatherByNameParams = {
 
 export const getCityWeather = async (
   params: GetCityWeatherParams,
-): AxiosPromise<WeatherData> => {
+): AxiosPromise<TWeatherData> => {
   return (
     await apiInstance.get(
       `onecall?lat=${params.position.latitude}&lon=${params.position.longitude}&units=metric&appid=${API_KEY}`,
     )
-  ).data as AxiosPromise<WeatherData>;
+  ).data as AxiosPromise<TWeatherData>;
 };
 
 export const getCityWeatherByName = async (
