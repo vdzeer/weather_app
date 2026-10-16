@@ -20,7 +20,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-ios/.xcode.env.local
+**/.xcode.env.local
 
 # Android/IntelliJ
 #
@@ -31,18 +31,15 @@ local.properties
 *.iml
 *.hprof
 .cxx/
+*.keystore
+!debug.keystore
+.kotlin/
 
 # node.js
 #
 node_modules/
 npm-debug.log
 yarn-error.log
-
-# BUCK
-buck-out/
-\.buckd/
-*.keystore
-!debug.keystore
 
 # fastlane
 #
@@ -60,5 +57,49 @@ buck-out/
 *.jsbundle
 
 # Ruby / CocoaPods
-/ios/Pods/
-/vendor/bundle/
+**/Pods/
+/vendor/
+
+# Temporary files created by Metro to check the health of the file watcher
+.metro-health-check*
+
+# testing
+/coverage
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Build outputs
+*.apk
+*.aab
+/android/app/release/
+*.xcarchive
+*.dSYM.zip
+
+# Signing material and local secrets: never commit these
+*.jks
+*.p8
+*.p12
+*.pem
+*.mobileprovision
+*.provisionprofile
+.env
+.env.*
+
+# Not source: docs, screenshots, store materials and unused images stay on disk only
+/docs/
+/store/
+/ios/splash.png
+/assets/icon.png
+
+# Not published: agent files and notes, docs, specs and store texts stay on disk only
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+/PRIVACY.md

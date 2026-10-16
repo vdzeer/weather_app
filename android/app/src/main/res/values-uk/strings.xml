@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="channel_forecast">Прогноз</string>
+    <string name="channel_forecast_description">Ранковий прогноз і попередження про дощ чи сніг</string>
+</resources>
