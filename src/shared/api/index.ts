@@ -1,2 +1,3 @@
-export * from './typicode';
-export * from './models';
+export * from './coordinates';
+export * from './openMeteo';
+export * from './geocoding';

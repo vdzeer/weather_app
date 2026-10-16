@@ -1,0 +1,3 @@
+CFBundleDisplayName = "WeatherApp";
+NSLocationWhenInUseUsageDescription = "Your location is used to show the forecast for where you are. It stays on this device. Only a rounded position, accurate to about 1 km, is sent to the weather and place-name services.";
+NSLocationAlwaysAndWhenInUseUsageDescription = "Your location is used to show the forecast for where you are. It stays on this device. Only a rounded position, accurate to about 1 km, is sent to the weather and place-name services.";

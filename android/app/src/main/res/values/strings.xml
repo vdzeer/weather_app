@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="channel_forecast">Forecast</string>
+    <string name="channel_forecast_description">Morning forecast and rain or snow alerts</string>
 </resources>
